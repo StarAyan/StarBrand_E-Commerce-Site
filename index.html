@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Star Brands — E-Commerce</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar">
+  <div class="nb-logo">⭐ <span>Star</span> Brands</div>
+
+  <ul class="nb-links">
+    <li><a href="#home" onclick="closeMobileNav()">
+      <i class="fa-solid fa-house"></i>
+      <span class="link-label">Home</span>
+    </a></li>
+    <li><a href="#shop" onclick="closeMobileNav()">
+      <i class="fa-solid fa-store"></i>
+      <span class="link-label">Shop</span>
+    </a></li>
+    <li><a href="#contact" onclick="closeMobileNav()">
+      <i class="fa-solid fa-envelope"></i>
+      <span class="link-label">Contact</span>
+    </a></li>
+  </ul>
+
+  <div class="nb-actions">
+    <!-- Search -->
+    <div class="nb-search-wrap">
+      <div class="search-box" id="searchBox">
+        <input type="text" id="searchInput" placeholder="Search items..."/>
+        <button class="sb-go" id="searchGo" title="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+      <button id="searchToggle" title="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+
+    <!-- Filter -->
+    <div class="filter-wrap">
+      <button id="filterBtn" title="Filter">
+        <i class="fa-solid fa-sliders"></i>
+        <span class="filter-label" id="filterLabel">ON</span>
+      </button>
+      <div class="filter-dropdown" id="filterDropdown">
+        <button onclick="applyFilter('low')" id="fLow"><i class="fa-solid fa-arrow-up"></i> Price: Low to High</button>
+        <button onclick="applyFilter('high')" id="fHigh"><i class="fa-solid fa-arrow-down"></i> Price: High to Low</button>
+        <button onclick="applyFilter('none')" id="fNone"><i class="fa-solid fa-xmark"></i> Clear Filter</button>
+      </div>
+    </div>
+
+    <!-- Cart -->
+    <div class="cart-wrap">
+      <button id="cartBtn" onclick="openCart()" title="Cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </button>
+      <span class="cart-label">Cart</span>
+    </div>
+
+    <!-- Hamburger -->
+    <button id="hamburger" onclick="toggleMobileNav()">
+      <i class="fa-solid fa-bars" id="hamburgerIcon"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <ul>
+    <li><a href="#home" onclick="closeMobileNav()"><i class="fa-solid fa-house"></i> Home</a></li>
+    <li><a href="#shop" onclick="closeMobileNav()"><i class="fa-solid fa-store"></i> Shop</a></li>
+    <li><a href="#contact" onclick="closeMobileNav()"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+  </ul>
+</div>
+
+<!-- ===== CART DRAWER ===== -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h3><i class="fa-solid fa-cart-shopping" style="font-size:1rem;margin-right:0.5rem;"></i>My Cart</h3>
+    <button class="cart-close" onclick="closeCart()"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Total:</span><span id="cartTotal">Rs. 0</span></div>
+    <div style="color:var(--muted);font-size:0.75rem;text-align:center;margin-top:0.3rem;">
+      <i class="fa-solid fa-shield-halved" style="color:var(--gold);margin-right:4px;"></i>Secure Checkout
+    </div>
+  </div>
+</div>
+
+<!-- ===== HOME SECTION ===== -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-stars" id="heroStars"></div>
+  <div class="hero-content">
+    <div class="hero-brand">✦ Premium Collection ✦</div>
+    <h1 class="hero-title">
+      ⭐ <span class="star-text">Star</span> Brands<br>E-Commerce Site
+    </h1>
+    <p class="hero-sub">
+      <span id="typingText" class="typing-word"></span>
+    </p>
+    <div class="hero-scroll">
+      <span>Scroll Down</span>
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SHOP SECTION ===== -->
+<section id="shop">
+  <div class="section-title">
+    <h2>Our <span>Premium</span> Shop</h2>
+    <p>Discover handpicked quality products at unbeatable prices</p>
+    <div class="section-divider"></div>
+  </div>
+  <div class="products-grid" id="productsGrid">
+    <div id="noResultMsg">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <p>Item Keyword Does Not Match</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT SECTION ===== -->
+<section id="contact">
+  <div class="contact-bg"></div>
+  <div class="section-title" style="position:relative;z-index:2;margin-bottom:2rem;">
+    <h2>Get In <span>Touch</span></h2>
+    <p>We're here to help — reach out anytime</p>
+    <div class="section-divider"></div>
+  </div>
+  <div class="contact-card">
+    <h2>Contact <span>Star Brands</span></h2>
+    <p style="color:var(--muted2);margin-top:0.5rem;">Have questions? We'd love to hear from you. Send us a message!</p>
+    <div class="contact-info">
+      <div class="ci-item">
+        <i class="fa-solid fa-location-dot"></i>
+        <div><small>Address</small><span>Karachi, Pakistan</span></div>
+      </div>
+      <div class="ci-item">
+        <i class="fa-solid fa-phone"></i>
+        <div><small>Phone</small><span>+92 341 4460761</span></div>
+      </div>
+      <div class="ci-item">
+        <i class="fa-solid fa-envelope"></i>
+        <div><small>Email</small><span>starbrand2k26@gmail.com</span></div>
+      </div>
+      <div class="ci-item">
+        <i class="fa-solid fa-clock"></i>
+        <div><small>Hours</small><span>Mon–Sat: 9AM–8PM</span></div>
+      </div>
+    </div>
+
+    <div class="social-row">
+      <a href="https://wa.me/923414460761" target="_blank" class="social-btn wa" data-name="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+      <a href="https://facebook.com" target="_blank" class="social-btn fb" data-name="Facebook">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+      <a href="https://instagram.com" target="_blank" class="social-btn ig" data-name="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://tiktok.com" target="_blank" class="social-btn tt" data-name="TikTok">
+        <i class="fa-brands fa-tiktok"></i>
+      </a>
+      <a href="https://youtube.com" target="_blank" class="social-btn yt" data-name="YouTube">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-logo">⭐ Star Brands</div>
+  <div class="footer-email">
+    <i class="fa-solid fa-envelope" style="color:var(--gold);margin-right:6px;"></i>
+    <a href="mailto:starbrand2k26@gmail.com">starbrand2k26@gmail.com</a>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-links">
+    <a href="#home">Home</a>
+    <a href="#shop">Shop</a>
+    <a href="#contact">Contact</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+  </div>
+  <div class="footer-copy">© 2026 Star Brands. All rights reserved. Made with ❤️ in Pakistan</div>
+</footer>
+
+<!-- ===== DETAIL OVERLAY ===== -->
+<div class="detail-overlay" id="detailOverlay">
+  <div class="detail-page" id="detailPage">
+    <button class="detail-close" onclick="closeDetail()"><i class="fa-solid fa-xmark"></i></button>
+    <div class="detail-inner" id="detailInner"></div>
+  </div>
+</div>
+
+<!-- ===== TOAST ===== -->
+<div class="toast" id="toast">
+  <i class="fa-solid fa-circle-check"></i>
+  <span id="toastMsg">Order Placed Successfully!</span>
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
