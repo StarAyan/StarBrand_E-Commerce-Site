@@ -108,7 +108,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit;}
   transition:width 0.4s cubic-bezier(.4,0,.2,1),opacity 0.3s;
   opacity:0;
 }
-.search-box.open{width:260px;opacity:1;}
+.search-box.open{width:180px;opacity:1;}
 .search-box input{
   flex:1;background:transparent;border:none;outline:none;
   color:var(--white);padding:0.5rem 1rem;font-size:0.9rem;
