@@ -18,10 +18,12 @@
 }
 html{scroll-behavior:smooth;font-size:16px;}
 body{
+  padding-top: 70px;
   background:var(--navy);
   color:var(--white);
   font-family:'Inter',sans-serif;
   min-height:100dvh;
+  width: 100dvw;
   overflow-x:hidden;
 }
 a{color:inherit;text-decoration:none;}
@@ -715,7 +717,14 @@ footer{
   .detail-inner{padding:1rem;}
   .detail-title{font-size:1.3rem;}
 }
-@media(min-width:861px){.mobile-nav{display:none !important;}}
+@media(min-width:861px){
+  .mobile-nav{display:none !important;
+  position: fixed !important;
+  top: 0%;
+  left: 0%;
+  right: 0%;
+  width: 100dvw !important;
+  z-index: 999 !important;}}
 
 /* body lock when overlay open */
 body.locked{overflow:hidden;}
